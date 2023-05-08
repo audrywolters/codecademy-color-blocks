@@ -1,6 +1,11 @@
 .block {
 	width: 100px;
 	height: 100px;
-	/* background-color: thistle; */
 	border: 1px solid black;
+}
+
+.blockContainer {
+	display: flex;
+	flex-direction: col;
+	flex-wrap: wrap;
 }

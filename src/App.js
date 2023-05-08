@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Block from './Block'
+import './Block'
 
 const colorNames = ['Aquamarine', 'BlueViolet', 'Chartreuse', 'CornflowerBlue', 'Thistle', 'SpringGreen', 'SaddleBrown', 'PapayaWhip', 'MistyRose'];
 
@@ -24,15 +25,17 @@ function App() {
   }
 
   return (
-    <div>
-      <button onClick={handleClickNewBlock}>New Block</button>
+    <>
+    <button onClick={handleClickNewBlock}>New Block</button>
+    <div className='blockContainer'>
       {blockList.map((block) => (
-        <>
+          <>
           <div className='block' key={block.id} style={{backgroundColor: block.color}} onClick={() => handleClickRemove(block.id)}></div> 
           {/* <Block blockProps={block} /> */}
-        </>
+          </>
       ))}
     </div>
+    </>
   )
 }
 
