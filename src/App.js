@@ -1,20 +1,36 @@
 import React, { useState } from 'react'
-import './Block.css'
+import Block from './Block'
+
+const colorNames = ['Aquamarine', 'BlueViolet', 'Chartreuse', 'CornflowerBlue', 'Thistle', 'SpringGreen', 'SaddleBrown', 'PapayaWhip', 'MistyRose'];
 
 function App() {
-  const [blocks, setBlocks] = useState([])
+
+  const [blockList, setBlockList] = useState([])
 
   const handleClickNewBlock = () => {
-    setBlocks((prev) => {
-      return [{id: Date.now(), color: Math.floor(Math.random() * 10)}, ...prev]
+    setBlockList((prev) => {
+      return [{
+              id: Date.now(), 
+              color: colorNames[Math.floor(Math.random() * 9)],
+              handleClick: handleClickRemove
+              }, ...prev]
     })
+  }
+
+  const handleClickRemove = (idToRemove) => {
+    setBlockList((prev) =>  prev.filter(
+      (block) => block.id !== idToRemove
+    ))
   }
 
   return (
     <div>
       <button onClick={handleClickNewBlock}>New Block</button>
-      {blocks.map((block) => (
-        <div className='block' key={block.id}>{block.color}</div>
+      {blockList.map((block) => (
+        <>
+          <div className='block' key={block.id} style={{backgroundColor: block.color}} onClick={() => handleClickRemove(block.id)}></div> 
+          {/* <Block blockProps={block} /> */}
+        </>
       ))}
     </div>
   )

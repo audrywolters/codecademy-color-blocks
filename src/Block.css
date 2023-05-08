@@ -1,6 +1,6 @@
 .block {
 	width: 100px;
 	height: 100px;
-	background-color: thistle;
-	border: 1px black;
+	/* background-color: thistle; */
+	border: 1px solid black;
 }
