@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './Block.css'
 
 function App() {
+  const [blocks, setBlocks] = useState([])
+
+  const handleClickNewBlock = () => {
+    setBlocks((prev) => {
+      return [{id: Date.now(), color: Math.floor(Math.random() * 10)}, ...prev]
+    })
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={handleClickNewBlock}>New Block</button>
+      {blocks.map((block) => (
+        <div className='block' key={block.id}>{block.color}</div>
+      ))}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
