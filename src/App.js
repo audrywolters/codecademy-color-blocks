@@ -30,7 +30,7 @@ function App() {
     <div className='blockContainer'>
       {blockList.map((block) => (
           <>
-            <div className='block' key={block.id} style={{backgroundColor: block.color}} onClick={() => handleClickRemove(block.id)}></div> 
+            <div className='block' key={block.id} style={{backgroundColor: block.color}} onClick={() => block.handleClick(block.id)}></div> 
             {/* <Block blockProps={block} /> */}
           </>
       ))}
